@@ -8,17 +8,23 @@ datasource db {
 }
 
 model User {
-  id             String         @id @default(cuid())
-  username       String         @unique
-  email          String?        @unique
-  phoneNumber    String?        @unique
-  password       String
-  age            Int?
-  medicalHistory String?        // JSON string for chronic conditions
-  prescriptions  Prescription[]
-  chatSessions   ChatSession[]
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
+  id                 String         @id @default(cuid())
+  username           String         @unique
+  email              String?        @unique
+  phoneNumber        String?        @unique
+  password           String
+  age                Int?
+  medicalHistory     String?        // JSON string for chronic conditions
+  prescriptions      Prescription[]
+  chatSessions       ChatSession[]
+  doctorName         String?
+  doctorPhone        String?
+  doctorEmail        String?
+  failedLoginAttempts Int            @default(0)
+  resetToken         String?        @unique
+  resetTokenExpiry   DateTime?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
 }
 
 model Prescription {

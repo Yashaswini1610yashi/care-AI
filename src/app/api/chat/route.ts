@@ -46,7 +46,25 @@ export async function POST(req: Request) {
         const response = await processWithGemini(systemPrompt);
         const text = response.text();
 
-        return NextResponse.json({ reply: text });
+        let reply = text;
+        try {
+            // Attempt to parse JSON if the response is an object string
+            const parsed = JSON.parse(text);
+            reply = parsed.response || parsed.reply || parsed.text || text;
+        } catch (e) {
+            // If not JSON, use raw text (might contain markdown blocks which we handle below)
+            const jsonMatch = text.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                try {
+                    const extracted = JSON.parse(jsonMatch[0]);
+                    reply = extracted.response || extracted.reply || extracted.text || text;
+                } catch (innerE) {
+                    // Fallback to raw text
+                }
+            }
+        }
+
+        return NextResponse.json({ reply });
     } catch (error: any) {
         console.error("Chat API Error:", error);
         return NextResponse.json({ error: "Failed to process chat", details: error.message }, { status: 500 });

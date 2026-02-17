@@ -47,6 +47,9 @@ export async function POST(req: Request) {
         - "restrictions": Warnings for patients with conditions like diabetes, heart disease, pregnancy, etc.
         - "ageDosage": A JSON object with recommendations for "Children", "Adults", and "Elderly".
         - "schedule": Array of times in HH:mm format based on frequency.
+        - "dietaryPlan": Targeted food and nutrition advice based on this medication (e.g., "Eat fiber-rich foods", "Take with plenty of water").
+        - "restrictedFoods": Specific foods or drinks to avoid while on this medication (e.g., "Avoid grapefruit", "No alcohol").
+        - "homeRemedies": Natural, safe, and complementary home-based remedies for the condition this medication treats (e.g., "Warm saline gargle", "Honey for coughs").
 
         Format the output as a JSON object with a 'medicines' array.
         If no medicines are found, return {"medicines": []}.
@@ -69,6 +72,9 @@ export async function POST(req: Request) {
         - "restrictions": Warnings for patients with conditions like diabetes, heart disease, pregnancy, etc.
         - "ageDosage": { "Children": "Consult doctor", "Adults": "Standard dose", "Elderly": "Use with caution" },
         - "schedule": ["08:00", "20:00"] (Example default schedule).
+        - "dietaryPlan": "Standard nutrition advice for this medication type.",
+        - "restrictedFoods": "Generic restrictions for this medication class.",
+        - "homeRemedies": "General natural remedies for this condition."
 
         Format the output as a JSON object with a 'medicines' array.
         If the audio is unclear or no medicine is mentioned, return {"medicines": []}.
@@ -90,6 +96,9 @@ export async function POST(req: Request) {
         - "restrictions": Warnings for patients (e.g., diabetes, heart disease, pregnancy).
         - "ageDosage": { "Children": "Consult doctor", "Adults": "Standard dose", "Elderly": "Use with caution" },
         - "schedule": ["08:00", "20:00"] (Example default schedule).
+        - "dietaryPlan": "Specific food suggestions that complement this medicine.",
+        - "restrictedFoods": "Foods that may negatively interact with this medicine.",
+        - "homeRemedies": "Natural treatments often used alongside this medication."
 
         Format the output as a JSON object with a 'medicines' array.
         If "${medicineName}" is not a valid medicine, return {"medicines": []}.
