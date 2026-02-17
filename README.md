@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # CareScan AI 🏥
 
 CareScan AI is a full-stack, AI-powered healthcare application designed to digitalize handwritten prescriptions and provide comprehensive medication insights. It leverages the latest Vision-LLM technology (Gemini 2.5) to bridge the gap between doctor notes and patient understanding.
@@ -89,3 +90,6 @@ Visit [http://localhost:3000](http://localhost:3000) to start scanning!
 # med-scan
 Doctor's prescription might not be readable by a common person soo our model helps those people to analyze it by taking image as the input.
 >>>>>>> b95d11e0187c1610fddfd1357682a3dc99e12de2
+=======
+# care-AI
+>>>>>>> 09943e98ac9d6a71564daed0a95c736e6b05d270
