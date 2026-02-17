@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv(".env.local")
 
 # Configure Google Gemini
-API_KEY = os.getenv("GOOGLE_API_KEY")
+API_KEY = os.getenv("GOOGLE_API_KEY") or "AIzaSyCSBygvGm4ePoU24wLFRpPPleseqqnGsXI"
 
 if not API_KEY:
     st.error("Missing Google API Key. Please configure it in .env.local or Streamlit Secrets.")
